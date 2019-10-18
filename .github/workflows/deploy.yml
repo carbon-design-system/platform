@@ -1,0 +1,35 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Install dependencies
+        run: yarn install --offline
+      - name: Build project
+        run: yarn build
+      - name: Install IBM Cloud CLI
+        run: curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+      - name: Install plugins for IBM Cloud CLI
+        run: |
+          ibmcloud plugin install container-registry
+          ibmcloud plugin install kubernetes-service
+      - name: Login to IBM Cloud
+        env:
+          CLOUD_API_KEY: ${{ secrets.CLOUD_API_KEY}}
+        run: |
+          ibmcloud login \
+          -a 'https://cloud.ibm.com' \
+          -u 'apikey' \
+          -p "$CLOUD_API_KEY" \
+          -o 'carbon-design-system' \
+          -s 'production' \
+          -r 'us-south'
