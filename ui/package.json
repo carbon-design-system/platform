@@ -1,0 +1,21 @@
+{
+  "name": "@carbon/platform-ui",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "clean": "",
+    "build": "exit 0",
+    "develop": "cross-env NODE_ENV=development nodemon -w config -w src/shared -w src/server src/server/index.js",
+    "start": "cross-env NODE_ENV=production node src/server/index.js"
+  },
+  "dependencies": {
+    "@carbon/server": "0.0.0",
+    "cross-env": "^6.0.3",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "rimraf": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}

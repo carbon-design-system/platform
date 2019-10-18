@@ -1,0 +1,14 @@
+# https://cloud.ibm.com/docs/containers?topic=containers-users#rbac
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: my_role_binding
+  namespace: default
+subjects:
+  - kind: User
+    name: IAM#joshblack@us.ibm.com
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: default_role
+  apiGroup: rbac.authorization.k8s.io

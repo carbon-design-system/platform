@@ -1,0 +1,23 @@
+# -------------------------------------------------------------------------------
+# Builder image used for setting up the workspace and building sub-packages and
+# service dependencies
+# -------------------------------------------------------------------------------
+FROM node:10.16.0
+
+WORKDIR /workspace
+
+# Dependencies
+COPY .yarn ./.yarn
+COPY package.json yarn.lock .yarnrc lerna.json ./
+
+# Packages and services
+COPY packages ./packages
+COPY ui ./ui
+
+# Install dependencies and build only packages in packages
+RUN yarn install --offline --frozen-lockfile
+RUN yarn lerna run build
+
+# Install only dependencies required for production
+RUN yarn lerna clean --yes && rm -rf node_modules
+RUN yarn install --offline --frozen-lockfile --production
