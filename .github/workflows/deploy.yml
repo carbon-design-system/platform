@@ -41,4 +41,4 @@ jobs:
           PLATFORM_UI_IMAGE="us.icr.io/carbon/platform-ui:$GITHUB_SHA"
           docker build -t $PLATFORM_UI_IMAGE ui
 
-          docker publish $PLATFORM_UI_IMAGE
+          docker push $PLATFORM_UI_IMAGE
