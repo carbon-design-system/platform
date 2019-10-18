@@ -1,4 +1,4 @@
-FROM carbondesignsystem/platform-build:0.0.0 as builder
+FROM carbondesignsystem/platform-build as builder
 FROM node:10.16.0-alpine
 
 ENV HOST 0.0.0.0

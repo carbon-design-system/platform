@@ -8,13 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Use Node.js 10.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: '10.x'
       - name: Build docker images
         run: |
-          docker build -t "carbondesignsystem/platform-build:$GITHUB_SHA" -f Dockerfile.build .
+          docker build -t carbondesignsystem/platform-build -f Dockerfile.build .
           docker build -t "carbondesignsystem/platform-ui:$GITHUB_SHA" ui
       # - name: Install dependencies
       # run: yarn install --offline
