@@ -1,7 +1,7 @@
 # platform
 
 [![Carbon Platform is released under the Apache-2.0 license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
-![Status](https://github.com/carbon-design-system/platform/workflows/.github/workflows/ci-check.yml/badge.svg)
+![Status](https://github.com/carbon-design-system/platform/workflows/CI%20Check/badge.svg)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./.github/CONTRIBUTING.md)
 
