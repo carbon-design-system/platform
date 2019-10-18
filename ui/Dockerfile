@@ -1,6 +1,10 @@
 FROM carbon/platform-build as builder
 FROM node:10.16.0-alpine
 
+RUN apk update \
+  && apk upgrade \
+  && rm -rf /var/cache/apk/*
+
 ENV HOST 0.0.0.0
 ENV PORT 3000
 ENV NODE_ENV production

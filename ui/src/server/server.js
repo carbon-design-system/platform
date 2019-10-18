@@ -28,7 +28,7 @@ async function create() {
   }
 
   server.get('*', (req, res) => {
-    throw new Error('booya');
+    res.send('OK');
   });
 
   server.use(error());
