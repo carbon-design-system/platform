@@ -8,10 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Build docker images
-        run: |
-          docker build -t carbondesignsystem/platform-build -f Dockerfile.build .
-          docker build -t "carbondesignsystem/platform-ui:$GITHUB_SHA" ui
       - name: Install IBM Cloud CLI
         run: curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
       - name: Install plugins for IBM Cloud CLI
@@ -36,3 +32,13 @@ jobs:
           # Setup kubernetes config
           CONFIG=$(ibmcloud ks cluster config --cluster $CLUSTER_ID --export)
           eval $CONFIG
+      - name: Build and publish docker images
+        run: |
+          # Builder image used in services
+          docker build -t carbon/platform-build -f Dockerfile.build .
+
+          # Platform UI service
+          PLATFORM_UI_IMAGE="us.icr.io/carbon/platform-ui:$GITHUB_SHA"
+          docker build -t $PLATFORM_UI_IMAGE ui
+
+          docker publish $PLATFORM_UI_IMAGE
