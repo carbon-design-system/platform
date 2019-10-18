@@ -14,7 +14,7 @@ jobs:
           node-version: '10.x'
       - name: Build docker images
         run: |
-          docker build -t carbondesignsystem/platform-build:0.0.0 -f Dockerfile.build
+          docker build -t carbondesignsystem/platform-build:0.0.0 -f Dockerfile.build .
           # cd ui
           # docker build -t carbondesignsystem/platform-ui:0.0.0 .
           # cd ..
