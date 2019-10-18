@@ -15,10 +15,10 @@ jobs:
       - name: Build docker images
         run: |
           docker --help
-          # docker build -t carbondesignsystem/platform-build:0.0.0 -f Dockerfile.build
-          # cd ui
-          # docker build -t carbondesignsystem/platform-ui:0.0.0 .
-          # cd ..
+          docker build -t carbondesignsystem/platform-build:0.0.0 -f Dockerfile.build
+          cd ui
+          docker build -t carbondesignsystem/platform-ui:0.0.0 .
+          cd ..
       # - name: Install dependencies
       # run: yarn install --offline
       # - name: Build project
